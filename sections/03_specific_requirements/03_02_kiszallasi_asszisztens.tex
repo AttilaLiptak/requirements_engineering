@@ -1,0 +1,231 @@
+\subsubsection{KA-01 — Észlelés}
+
+\noindent
+\textbf{Given:} A jármű parkol, és az ajtók zárva vannak
+
+\noindent
+\textbf{When:} Egy mozgó objektum megközelíti a jármű ajtaját oldalról
+
+\noindent
+\textbf{Then:} A rendszer érzékeli a mozgást, és készen áll a figyelmeztetés kiadására, ha az ajtó kinyílik
+
+\noindent
+\textbf{Comment:} A rendszer előkészíti a figyelmeztetési állapotot, amint potenciális veszélyt érzékel parkolás közben
+
+
+\begin{table}[H]
+\centering
+\begin{tabularx}{\textwidth}{|c|X|}
+\hline
+\textbf{Azonosító} & \textbf{Leírás} \\ \hline
+FR-KA-01.1 & A rendszernek folyamatosan monitoroznia kell az ajtók környezetét parkolás közben. \\ \hline
+FR-KA-01.2 & A rendszernek 3 méteres távolságon belül képesnek kell lennie mozgás detektálására. \\ \hline
+FR-KA-01.3 & A detektálást követően a rendszernek készenléti állapotba kell lépnie, hogy az ajtónyitás esetén azonnal reagálhasson. \\ \hline
+\end{tabularx}
+\end{table}
+
+\subsubsection{KA-02 — Figyelmeztetés}
+
+\noindent
+\textbf{Given:} A rendszer aktív, és mozgó objektumot érzékelt az ajtó közelében
+
+\noindent
+\textbf{When:} A felhasználó megpróbálja kinyitni az ajtót
+
+\noindent
+\textbf{Then:} A rendszer akusztikus figyelmeztetést ad
+
+\noindent
+\textbf{Comment:} A rendszer csak akkor aktivál figyelmeztetést, ha valós veszélyt érzékel és az ajtó nyitása megkezdődik
+
+
+\begin{table}[H]
+\centering
+\begin{tabularx}{\textwidth}{|c|X|}
+\hline
+\textbf{Azonosító} & \textbf{Leírás} \\ \hline
+FR-KA-02.1 & A rendszernek valós időben kell összevetnie az ajtónyitás eseményt a veszélyérzékeléssel. \\ \hline
+FR-KA-02.2 & A figyelmeztetést legfeljebb 0,5 másodpercen belül kell kiadni. \\ \hline
+FR-KA-02.3 & A jelzésnek akusztikus formában kell megjelennie, legalább 70 dB hangnyomással nappali üzemben. \\ \hline
+\end{tabularx}
+\end{table}
+
+
+\subsubsection{KA-03 — Nincs veszély}
+
+\noindent
+\textbf{Given:} A jármű parkol, és nincs mozgó objektum a közelben
+
+\noindent
+\textbf{When:} A felhasználó kinyitja az ajtót
+
+\noindent
+\textbf{Then:} A rendszer nem ad ki figyelmeztetést
+
+\noindent
+\textbf{Comment:} Felesleges figyelmeztetések elkerülése érdekében a rendszer csak tényleges veszély esetén jelez
+
+\begin{table}[H]
+\centering
+\begin{tabularx}{\textwidth}{|c|X|}
+\hline
+\textbf{Azonosító} & \textbf{Leírás} \\ \hline
+FR-KA-03.1 & A rendszernek képesnek kell lennie megkülönböztetni a biztonságos és veszélyes helyzeteket. \\ \hline
+FR-KA-03.2 & Mozgás hiányában a rendszernek figyelmeztetés nélkül kell maradnia. \\ \hline
+\end{tabularx}
+\end{table}
+
+
+\subsubsection{KA-04 — Inaktív állapot}
+
+\noindent
+\textbf{Given:} A jármű mozgásban van
+
+\noindent
+\textbf{When:} A rendszer mozgó objektumokat észlel
+
+\noindent
+\textbf{Then:} A rendszer nem aktiválódik és nem ad figyelmeztetést
+
+\noindent
+\textbf{Comment:} Menet közben a kiszállási asszisztens funkció inaktív, mivel a helyzet nem releváns
+
+\begin{table}[H]
+\centering
+\begin{tabularx}{\textwidth}{|c|X|}
+\hline
+\textbf{Azonosító} & \textbf{Leírás} \\ \hline
+FR-KA-04.1 & A rendszernek a jármű sebességét figyelembe véve kell meghatároznia az aktív/inaktív állapotot. \\ \hline
+FR-KA-04.2 & Legalább 5 km/h feletti sebességnél a rendszernek automatikusan inaktív módba kell lépnie. \\ \hline
+\end{tabularx}
+\end{table}
+
+
+\subsubsection{KA-05 — Ajtó megkülönböztetés}
+
+\noindent
+\textbf{Given:} A jármű több ajtóval rendelkezik
+
+\noindent
+\textbf{When:} A mozgás az adott ajtó közelében történik
+
+\noindent
+\textbf{Then:} A rendszer csak az érintett ajtónál ad figyelmeztetést
+
+\noindent
+\textbf{Comment:} Csak a veszélyeztetett ajtó közelében kell aktiválódnia a jelzésnek
+
+\begin{table}[H]
+\centering
+\begin{tabularx}{\textwidth}{|c|X|}
+\hline
+\textbf{Azonosító} & \textbf{Leírás} \\ \hline
+FR-KA-05.1 & A rendszernek minden ajtóhoz külön érzékelőt kell rendelnie. \\ \hline
+FR-KA-05.2 & A figyelmeztetés csak az adott ajtóhoz tartozó interfészen jelenhet meg. \\ \hline
+FR-KA-05.3 & A többi ajtónál a rendszernek inaktívnak kell maradnia. \\ \hline
+\end{tabularx}
+\end{table}
+
+
+\subsubsection{KA-06 — Objektumtípus megkülönböztetés}
+
+\noindent
+\textbf{Given:} A jármű parkol
+
+\noindent
+\textbf{When:} A rendszer mozgó objektumot észlel az ajtó irányából
+
+\noindent
+\textbf{Then:} A rendszer meghatározza az objektum típusát, és ennek megfelelően jelez
+
+\noindent
+\textbf{Comment:} Különböző objektumok (pl. gyalogos, kerékpár, autó) eltérő módon kerülnek jelzésre
+
+\begin{table}[H]
+\centering
+\begin{tabularx}{\textwidth}{|c|X|}
+\hline
+\textbf{Azonosító} & \textbf{Leírás} \\ \hline
+FR-KA-06.1 & A rendszernek képfeldolgozással vagy radaralapú felismeréssel kell az objektumtípust azonosítania. \\ \hline
+FR-KA-06.2 & Azonosított objektumtípus alapján különböző figyelmeztetési mintákat kell alkalmazni (pl. hangmagasság, villogás). \\ \hline
+FR-KA-06.3 & A rendszernek legalább három kategóriát kell megkülönböztetnie: gyalogos, kerékpár, gépjármű. \\ \hline
+\end{tabularx}
+\end{table}
+
+
+\subsubsection{KA-07 — Több ajtó kezelése}
+
+\noindent
+\textbf{Given:} A jármű parkol, és több utasa van
+
+\noindent
+\textbf{When:} Több ajtót egyszerre kezdenek el kinyitni
+
+\noindent
+\textbf{Then:} A rendszer minden ajtó esetében külön érzékel és jelez
+
+\noindent
+\textbf{Comment:} Több ajtó párhuzamos működése esetén is meg kell őrizni a külön érzékelést
+
+\begin{table}[H]
+\centering
+\begin{tabularx}{\textwidth}{|c|X|}
+\hline
+\textbf{Azonosító} & \textbf{Leírás} \\ \hline
+FR-KA-07.1 & A rendszernek párhuzamos ajtónyitásokat is kezelnie kell késleltetés nélkül. \\ \hline
+FR-KA-07.2 & Minden ajtóhoz külön szenzoradat-feldolgozás szükséges. \\ \hline
+FR-KA-07.3 & Ha több ajtónál egyidejű veszély van, a rendszernek mindkét helyen jeleznie kell. \\ \hline
+\end{tabularx}
+\end{table}
+
+
+\subsubsection{KA-08 — Késleltetett figyelmeztetés}
+
+\noindent
+\textbf{Given:} A jármű parkol, és egy objektum gyorsan közeledik
+
+\noindent
+\textbf{When:} Az ajtónyitás pillanatában az objektum még biztonságos távolságban van
+
+\noindent
+\textbf{Then:} A rendszer késleltetett figyelmeztetést ad, ha a veszély távolság csökken
+
+\noindent
+\textbf{Comment:} A rendszer előre kalkulálja az objektum sebességét, hogy időben jelezzen, de ne túl korán
+
+\begin{table}[H]
+\centering
+\begin{tabularx}{\textwidth}{|c|X|}
+\hline
+\textbf{Azonosító} & \textbf{Leírás} \\ \hline
+FR-KA-08.1 & A rendszernek képesnek kell lennie az objektum sebességének és távolságának becslésére. \\ \hline
+FR-KA-08.2 & A figyelmeztetés akkor aktiválódik, ha az objektum várhatóan 1 másodpercen belül veszélyt jelent. \\ \hline
+FR-KA-08.3 & A rendszernek meg kell akadályoznia a túl korai jelzést a felesleges riasztások elkerülése érdekében. \\ \hline
+\end{tabularx}
+\end{table}
+
+
+\subsubsection{KA-09 — Éjszakai mód}
+
+\noindent
+\textbf{Given:} A jármű éjszakai üzemmódban van
+
+\noindent
+\textbf{When:} A rendszer veszélyt érzékel
+
+\noindent
+\textbf{Then:} A rendszer csökkentett hangerővel és vizuális jelzéssel figyelmeztet
+
+\noindent
+\textbf{Comment:} Éjszakai környezetben a rendszer halkabb és kevésbé zavaró módon jelez, de megtartja a hatékonyságot
+
+\begin{table}[H]
+\centering
+\begin{tabularx}{\textwidth}{|c|X|}
+\hline
+\textbf{Azonosító} & \textbf{Leírás} \\ \hline
+FR-KA-09.1 & A rendszernek automatikusan át kell váltania éjszakai módra a környezeti fény alapján. \\ \hline
+FR-KA-09.2 & Éjszakai módban a hangjelzés maximum 50 dB lehet. \\ \hline
+FR-KA-09.3 & A rendszernek kiegészítő vizuális jelzést (pl. LED-villogás) kell alkalmaznia a hangerő csökkentésének kompenzálására. \\ \hline
+\end{tabularx}
+\end{table}
