@@ -1,0 +1,87 @@
+\subsubsection{AH-01 — Jármű érzékelése a holttérben }
+Ez a funkció a holttérfigyelő rendszer alapműködése. Az észlelés megbízhatóságát FMEA-elemzés alapján kell garantálni; megfelelőség: ASIL-D követelmények. 
+
+\begin{table}[H]
+\centering
+\begin{tabularx}{\textwidth}{|c|X|}
+\hline
+\textbf{Azonosító} & \textbf{Leírás} \\ \hline
+FR-AH-01.1 & A rendszernek folyamatosan monitoroznia kell a jármű oldalsó terét radar + kamera alapú detekcióval. \\ \hline
+FR-AH-01.2 & A holttérbe belépő objektumot a rendszernek $\leq$ 250 ms késleltetéssel kell észlelni. \\ \hline
+FR-AH-01.3 & A rendszernek vizuális jelzést kell aktiválnia a megfelelő oldalon (pl. tükör-LED). \\ \hline
+FR-AH-01.4 & A detektálási megbízhatóságnak ASIL-D szerint igazoltnak kell lennie. \\ \hline
+\end{tabularx}
+\end{table}
+
+\subsubsection{AH-02 — Figyelmeztetés adaptálása a vezető reakcióidejéhez}
+A figyelmeztetés személyre szabása növeli a biztonságot. A küszöbértékek meghatározása kockázatelemzésre épül.
+
+\begin{table}[H]
+\centering
+\begin{tabularx}{\textwidth}{|c|X|}
+\hline
+\textbf{Azonosító} & \textbf{Leírás} \\ \hline
+FR-AH-02.1 & A rendszernek a vezető reakcióidejét folyamatosan kell kalibrálnia statisztikai módszerrel. \\ \hline
+FR-AH-02.2 & A figyelmeztetések időzítését a tárolt reakcióidő-profil alapján kell módosítani. \\ \hline
+FR-AH-02.3 & A rendszernek kritikus esemény esetén azonnali riasztást kell kiadnia, még kedvezőtlen reakcióprofil mellett is. \\ \hline
+\end{tabularx}
+\end{table}
+
+\subsubsection{AH-03 — Szenzorfúzió a holttér pontos felismeréséhez}
+A szenzorfúzió fokozza a biztonságot, különösen rossz látási viszonyok mellett. Elengedhetetlen az időszinkronizálás, redundancia és a hibatűrés. 
+
+\begin{table}[H]
+\centering
+\begin{tabularx}{\textwidth}{|c|X|}
+\hline
+\textbf{Azonosító} & \textbf{Leírás} \\ \hline
+FR-AH-03.1 & A rendszernek a radar és kamera jeleit időszinkronizált formában kell gyűjtenie. \\ \hline
+FR-AH-03.2 & A szenzorfúziónak kezelnie kell a távolságbeli eltéréseket és zajt. \\ \hline
+FR-AH-03.3 & A fúzió eredményeként előálló távolságinformáció alapján kell dönteni a figyelmeztetés kiadásáról. \\ \hline
+FR-AH-03.4 & A rendszernek redundáns módon kell működnie egy érzékelő kiesése esetén. \\ \hline
+\end{tabularx}
+\end{table}
+
+\subsubsection{AH-04 — Kritikus figyelmeztetés sávváltáskor }
+Ez magas kockázatú esemény FMEA szerint — a figyelmeztetésnek azonnalinak, intenzívnek és félreérthetetlennek kell lennie.
+
+\begin{table}[H]
+\centering
+\begin{tabularx}{\textwidth}{|c|X|}
+\hline
+\textbf{Azonosító} & \textbf{Leírás} \\ \hline
+FR-AH-04.1 & A rendszernek monitoroznia kell az indexállapotot és a jármű laterális mozgását. \\ \hline
+FR-AH-04.2 & Kritikus esetben vizuális + akusztikus + opcionális haptikus jelzést kell kiadni. \\ \hline
+FR-AH-04.3 & A figyelmeztetésnek $\leq 150$ ms reakcióidővel kell aktiválódnia. \\ \hline
+FR-AH-04.4 & A figyelmeztetés intenzitását a veszély mértéke szerint kell szabályozni. \\ \hline
+\end{tabularx}
+\end{table}
+
+\subsubsection{AH-05 — Érzékenység módosítása környezeti tényezők alapján }
+A rendszer adaptivitása nemcsak a vezetőhöz, hanem a környezeti feltételekhez is igazodik, növelve a biztonságot kedvezőtlen látási viszonyok között.
+
+\begin{table}[H]
+\centering
+\begin{tabularx}{\textwidth}{|c|X|}
+\hline
+\textbf{Azonosító} & \textbf{Leírás} \\ \hline
+FR-AH-05.1 & A rendszernek monitoroznia kell a környezeti fényviszonyokat. \\ \hline
+FR-AH-05.2 & Alacsony fény esetén a radaradatok súlya növekedjen a fúziós algoritmusban. \\ \hline
+FR-AH-05.3 & A figyelmeztető LED aktív állapotát a környezet alapján dinamikusan hosszabbítani kell. \\ \hline
+\end{tabularx}
+\end{table}
+
+\subsubsection{AH-06 — Kommunikáció az oldalütközés-elkerülő modullal }
+A funkció integrált működést igényel a modulok között. A CAN-alapú kommunikációt, üzenetformátumokat és prioritásokat pontosan definiálni kell az architektúrában.
+
+\begin{table}[H]
+\centering
+\begin{tabularx}{\textwidth}{|c|X|}
+\hline
+\textbf{Azonosító} & \textbf{Leírás} \\ \hline
+FR-AH-06.1 & A holttérfigyelő rendszernek szabványos CAN-üzenetben kell jeleznie a veszélyt. \\ \hline
+FR-AH-06.2 & Az oldalütközés-elkerülő modulnak képesnek kell lennie a beérkező veszélyjelzést értelmezni. \\ \hline
+FR-AH-06.3 & Szükség esetén a rendszernek automatikusan enyhe fékezést kell alkalmaznia. \\ \hline
+FR-AH-06.4 & A kommunikációs protokollnak hibatűrőnek kell lennie. \\ \hline
+\end{tabularx}
+\end{table}
