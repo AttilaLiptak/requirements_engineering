@@ -1,0 +1,183 @@
+\subsubsection{PFGyK-01 — Deaktiválás}
+
+\noindent
+\textbf{Given:} A rendszer aktív.
+
+\noindent
+\textbf{When:} Érzékeli, hogy az autó nem városi környezetben halad (pl.: tartósan 55 km/h felett).
+
+\noindent
+\textbf{Then:} Deaktiválja a rendszert.
+
+\begin{table}[H]
+\centering
+\begin{tabularx}{\textwidth}{|c|X|}
+\hline
+\textbf{Azonosító} & \textbf{Leírás} \\ \hline
+FR-PFGyK-01.1 & A rendszernek folyamatosan monitoroznia kell a jármű aktuális sebességét. \\ \hline
+FR-PFGyK-01.2 & Ha a sebesség 55 km/h felett legalább 10 másodpercig fennáll, a rendszernek automatikusan ki kell kapcsolnia. \\ \hline
+FR-PFGyK-01.3 & A deaktiválásról vizuális visszajelzést kell adni a vezető számára. \\ \hline
+FR-PFGyK-01.4 & A deaktiválást manuális felülbírálat (pl. beállítási opció) felülírhatja. \\ \hline
+\end{tabularx}
+\end{table}
+
+
+\subsubsection{PFGyK-02 — Aktiválás}
+
+\noindent
+\textbf{Given:} A rendszer inaktív.
+
+\noindent
+\textbf{When:} Érzékeli, hogy az autó városi környezetben halad (pl.: tartósan 55 km/h alatt).
+
+\noindent
+\textbf{Then:} Aktiválja a rendszert.
+
+\noindent
+\textbf{Comment:} Veszélyzóna: a jármű várható útjában álló akadály
+vagy mozgó akadály van valahol, amivel ütközne a jármű (ha egyik sem tér el a jelenlegi útjától vagy sebességétől).
+
+
+\begin{table}[H]
+\centering
+\begin{tabularx}{\textwidth}{|c|X|}
+\hline
+\textbf{Azonosító} & \textbf{Leírás} \\ \hline
+FR-PFGyK-02.1 & A rendszernek folyamatosan monitoroznia kell a sebességet és a vezetési környezetet. \\ \hline
+FR-PFGyK-02.2 & Ha a sebesség 55 km/h alatt marad legalább 10 másodpercig, a rendszer automatikusan aktiválódik. \\ \hline
+FR-PFGyK-02.3 & Aktiváláskor a rendszernek vizuális visszajelzést kell adnia (pl. ikon a kijelzőn). \\ \hline
+FR-PFGyK-02.4 & Az automatikus aktiválás felülírható manuális beállítással. \\ \hline
+\end{tabularx}
+\end{table}
+
+
+\subsubsection{PFGyK-03 — Veszélyészlelés - index}
+
+\noindent
+\textbf{Given:} A rendszer aktív és a jármű indexel.
+
+\noindent
+\textbf{When:} A perifériás AI kamerák, az index irányában, “veszélyzónában” érzékelnek valamit.
+
+\noindent
+\textbf{Then:} A veszély irányába adaptív hangjelzés és vizuális figyelmeztetést ad (pl.: a fedélzeti számítógépen az autó modellje mellett a megfelelő irányban színjelzés).
+
+\noindent
+\textbf{Comment:} A funkció célja, hogy a sofőrt figyelmeztesse, ha sávváltás vagy kanyarodás közben veszély fenyeget.
+
+
+\begin{table}[H]
+\centering
+\begin{tabularx}{\textwidth}{|c|X|}
+\hline
+\textbf{Azonosító} & \textbf{Leírás} \\ \hline
+FR-PFGyK-03.1 & A rendszernek képesnek kell lennie a jármű indexjelzésének érzékelésére és az irány meghatározására. \\ \hline
+FR-PFGyK-03.2 & A kamerarendszernek a veszélyzónában (3–5 m tartományban) észlelt akadályokat azonnal jeleznie kell. \\ \hline
+FR-PFGyK-03.3 & Észlelés esetén adaptív figyelmeztetést kell adni (hang + kijelzőn oldalsó színjelzés). \\ \hline
+FR-PFGyK-03.4 & A figyelmeztetés intenzitásának a veszély mértékéhez kell igazodnia (pl. közeledési sebesség alapján). \\ \hline
+\end{tabularx}
+\end{table}
+
+
+\subsubsection{PFGyK-04 — Veszélyészlelés - lassítás}
+
+\noindent
+\textbf{Given:} A rendszer aktív, és a jármű lassít.
+
+\noindent
+\textbf{When:} A perifériás AI kamerák “veszélyzónában” érzékelnek valamit.
+
+\noindent
+\textbf{Then:} A veszély irányába vizuális figyelmeztetést ad.
+
+\noindent
+\textbf{Comment:} A lassítás indikálhatja az irányváltást, mert a sofőr elmulaszthatja az index használatát.
+
+
+\begin{table}[H]
+\centering
+\begin{tabularx}{\textwidth}{|c|X|}
+\hline
+\textbf{Azonosító} & \textbf{Leírás} \\ \hline
+FR-PFGyK-04.1 & A rendszernek képesnek kell lennie a jármű lassulásának detektálására (pl. fékpedál vagy gyorsulásmérő alapján). \\ \hline
+FR-PFGyK-04.2 & Lassítás esetén a kameráknak aktívan ellenőrizniük kell a jármű oldalsó veszélyzónáit. \\ \hline
+FR-PFGyK-04.3 & Veszély észlelésekor a rendszer vizuális figyelmeztetést ad a kijelzőn az érintett irányban. \\ \hline
+FR-PFGyK-04.4 & A figyelmeztetésnek meg kell szűnnie, ha az akadály biztonságos távolságba kerül. \\ \hline
+\end{tabularx}
+\end{table}
+
+
+\subsubsection{PFGyK-05 — Figyelmeztetés megszűnése}
+
+\noindent
+\textbf{Given:} A rendszer aktívan figyelmezteti a vezetőt egy veszélyzónában lévő objektumról.
+
+\noindent
+\textbf{When:} A jármű biztonságos távolságra kerül az akadálytól.
+
+\noindent
+\textbf{Then:} Megszűnik a figyelmeztetés.
+
+\noindent
+\textbf{Comment:} Vagy az akadály (pl.: biciklis) távolodik el.
+
+
+\begin{table}[H]
+\centering
+\begin{tabularx}{\textwidth}{|c|X|}
+\hline
+\textbf{Azonosító} & \textbf{Leírás} \\ \hline
+FR-PFGyK-05.1 & A rendszernek folyamatosan monitoroznia kell a veszélyzónában lévő objektum távolságát. \\ \hline
+FR-PFGyK-05.2 & Ha a távolság meghaladja a biztonsági határértéket (pl. 3 m), a figyelmeztetésnek automatikusan meg kell szűnnie. \\ \hline
+FR-PFGyK-05.3 & A rendszernek 1 másodpercen belül vissza kell térnie készenléti állapotba. \\ \hline
+\end{tabularx}
+\end{table}
+
+
+\subsubsection{PFGyK-06 — Nincs veszély}
+
+\noindent
+\textbf{Given:} A rendszer aktív és nincs hibás szenzor.
+
+\noindent
+\textbf{When:} A jármű városon belül lassít vagy indexel.
+
+\noindent
+\textbf{Then:} A rendszer nem ad figyelmeztetést.
+
+
+\begin{table}[H]
+\centering
+\begin{tabularx}{\textwidth}{|c|X|}
+\hline
+\textbf{Azonosító} & \textbf{Leírás} \\ \hline
+FR-PFGyK-06.1 & A rendszernek meg kell különböztetnie a veszélymentes körülményeket az aktív figyelmeztetést igénylő helyzetektől. \\ \hline
+FR-PFGyK-06.2 & Ha nincs észlelhető akadály, a rendszernek csendes, készenléti módban kell maradnia. \\ \hline
+FR-PFGyK-06.3 & A rendszernek biztosítania kell, hogy ne adjon téves figyelmeztetést (false positive arány <1\%). \\ \hline
+\end{tabularx}
+\end{table}
+
+
+\subsubsection{PFGyK-07 — Szenzorhiba}
+
+\noindent
+\textbf{Given:} A rendszer aktív.
+
+\noindent
+\textbf{When:} Valamelyik szenzor meghibásodik.
+
+\noindent
+\textbf{Then:} A működő szenzorok továbbra is figyelmeztetnek veszély esetén, de a hibás folyamatosan vizuális figyelmeztetést ad az adott irányba.
+
+
+\begin{table}[H]
+\centering
+\begin{tabularx}{\textwidth}{|c|X|}
+\hline
+\textbf{Azonosító} & \textbf{Leírás} \\ \hline
+FR-PFGyK-07.1 & A rendszernek képesnek kell lennie az egyes szenzorok állapotának folyamatos monitorozására. \\ \hline
+FR-PFGyK-07.2 & Hiba észlelésekor az adott irányban a kijelzőn állandó vizuális hibajelzést kell mutatni. \\ \hline
+FR-PFGyK-07.3 & A működő szenzoroknak továbbra is teljes funkcionalitással kell dolgozniuk. \\ \hline
+FR-PFGyK-07.4 & A rendszernek a hibát naplóznia kell a diagnosztikai memóriában (ECU log). \\ \hline
+\end{tabularx}
+\end{table}
