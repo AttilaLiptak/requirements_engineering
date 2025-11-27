@@ -1,5 +1,16 @@
 \subsubsection{AH-01 — Jármű érzékelése a holttérben }
-Ez a funkció a holttérfigyelő rendszer alapműködése. Az észlelés megbízhatóságát FMEA-elemzés alapján kell garantálni; megfelelőség: ASIL-D követelmények. 
+
+\noindent
+\textbf{Given:} A jármű \textasciitilde 50 km/h sebességgel halad városi forgalomban, és a radar + kamera szenzorok aktívak.
+
+\noindent
+\textbf{When:} Egy másik jármű megközelíti az autó bal oldali holtterét.
+
+\noindent
+\textbf{Then:} A rendszer észleli a járművet, és vizuális figyelmeztetést jelenít meg a bal oldali visszapillantó tükörben (pl. sárga LED).
+
+\noindent
+\textbf{Comment:} Ez a funkció a holttérfigyelő rendszer alapműködése. Az észlelés megbízhatóságát FMEA-elemzés alapján kell garantálni; megfelelőség: ASIL-D követelmények. 
 
 \begin{table}[H]
 \centering
@@ -14,7 +25,18 @@ FR-AH-01.4 & A detektálási megbízhatóságnak ASIL-D szerint igazoltnak kell 
 \end{table}
 
 \subsubsection{AH-02 — Figyelmeztetés adaptálása a vezető reakcióidejéhez}
-A figyelmeztetés személyre szabása növeli a biztonságot. A küszöbértékek meghatározása kockázatelemzésre épül.
+
+\noindent
+\textbf{Given:} A rendszer korábban megmérte a vezető tipikus reakcióidejét.
+
+\noindent
+\textbf{When:} Egy jármű hirtelen gyorsítva közelít a holttérből, miközben a vezető sávot vált.
+
+\noindent
+\textbf{Then:} A figyelmeztetés idejét és intenzitását a rendszer a vezető korábban mért reakcióidejéhez igazítja.
+
+\noindent
+\textbf{Comment:} A figyelmeztetés személyre szabása növeli a biztonságot. A küszöbértékek meghatározása kockázatelemzésre épül.
 
 \begin{table}[H]
 \centering
@@ -28,7 +50,18 @@ FR-AH-02.3 & A rendszernek kritikus esemény esetén azonnali riasztást kell ki
 \end{table}
 
 \subsubsection{AH-03 — Szenzorfúzió a holttér pontos felismeréséhez}
-A szenzorfúzió fokozza a biztonságot, különösen rossz látási viszonyok mellett. Elengedhetetlen az időszinkronizálás, redundancia és a hibatűrés. 
+
+\noindent
+\textbf{Given:} A radar- és AI-kamera érzékelők adatokat gyűjtenek a jármű környezetéről.
+
+\noindent
+\textbf{When:} A két szenzor azonos objektumot detektál a holttérben, de eltérő távolságokat becsül.
+
+\noindent
+\textbf{Then:} A központi ECU szenzorfúziót alkalmaz (pl. súlyozott átlag), és a pontosított távolságinformáció alapján továbbítja a döntést a figyelmeztető modulnak.
+
+\noindent
+\textbf{Comment:} A szenzorfúzió fokozza a biztonságot, különösen rossz látási viszonyok mellett. Elengedhetetlen az időszinkronizálás, redundancia és a hibatűrés. 
 
 \begin{table}[H]
 \centering
@@ -43,7 +76,18 @@ FR-AH-03.4 & A rendszernek redundáns módon kell működnie egy érzékelő kie
 \end{table}
 
 \subsubsection{AH-04 — Kritikus figyelmeztetés sávváltáskor }
-Ez magas kockázatú esemény FMEA szerint — a figyelmeztetésnek azonnalinak, intenzívnek és félreérthetetlennek kell lennie.
+
+\noindent
+\textbf{Given:} A vezető balra indexel, miközben a radar a bal oldali holttérben járművet érzékel.
+
+\noindent
+\textbf{When:} A jármű megkezdi a sávváltást és megközelíti a sávhatárt.
+
+\noindent
+\textbf{Then:} A rendszer erős vizuális és hangjelzést ad, és opcionálisan kormányrezgést is aktivál.
+
+\noindent
+\textbf{Comment:} Ez magas kockázatú esemény FMEA szerint — a figyelmeztetésnek azonnalinak, intenzívnek és félreérthetetlennek kell lennie.
 
 \begin{table}[H]
 \centering
@@ -58,7 +102,18 @@ FR-AH-04.4 & A figyelmeztetés intenzitását a veszély mértéke szerint kell 
 \end{table}
 
 \subsubsection{AH-05 — Érzékenység módosítása környezeti tényezők alapján }
-A rendszer adaptivitása nemcsak a vezetőhöz, hanem a környezeti feltételekhez is igazodik, növelve a biztonságot kedvezőtlen látási viszonyok között.
+
+\noindent
+\textbf{Given:} Éjszaka van, és a kamerák alacsony fényviszonyokat érzékelnek.
+
+\noindent
+\textbf{When:} A radar aktivitása nő a látási korlátok miatt.
+
+\noindent
+\textbf{Then:} A rendszer a radaradatokat preferálja, és hosszabb ideig tartja aktív jelzésben a figyelmeztető LED-et.
+
+\noindent
+\textbf{Comment:} A rendszer adaptivitása nemcsak a vezetőhöz, hanem a környezeti feltételekhez is igazodik, növelve a biztonságot kedvezőtlen látási viszonyok között.
 
 \begin{table}[H]
 \centering
@@ -72,7 +127,18 @@ FR-AH-05.3 & A figyelmeztető LED aktív állapotát a környezet alapján dinam
 \end{table}
 
 \subsubsection{AH-06 — Kommunikáció az oldalütközés-elkerülő modullal }
-A funkció integrált működést igényel a modulok között. A CAN-alapú kommunikációt, üzenetformátumokat és prioritásokat pontosan definiálni kell az architektúrában.
+
+\noindent
+\textbf{Given:} A holttérfigyelő rendszer járművet észlel a jobb oldalon.
+
+\noindent
+\textbf{When:} A vezető jobbra manőverezik (pl. parkolás közben).
+
+\noindent
+\textbf{Then:} Az oldalütközés-elkerülő rendszer figyelmeztetési információt kér a központi ECU-tól, és szükség esetén enyhe fékezést hajt végre.
+
+\noindent
+\textbf{Comment:} A funkció integrált működést igényel a modulok között. A CAN-alapú kommunikációt, üzenetformátumokat és prioritásokat pontosan definiálni kell az architektúrában.
 
 \begin{table}[H]
 \centering

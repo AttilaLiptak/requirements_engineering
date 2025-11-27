@@ -1,0 +1,262 @@
+\subsubsection{OÜEE-01 - Akadály érzékelése}
+
+\noindent
+\textbf{Given:} A jármű szűk helyen manőverezik vagy parkol
+
+\noindent
+\textbf{When:} Az ultrahangos oldalérzékelő akadályt észlel
+
+\noindent
+\textbf{Then:} A rendszer figyelmeztető jelzést ad
+
+\noindent
+\textbf{Comment:} Alapvető vezetőtámogatási funkció.
+
+\begin{table}[H]
+\centering
+\begin{tabularx}{\textwidth}{|c|X|}
+\hline
+\textbf{Azonosító} & \textbf{Leírás} \\ \hline
+FR-OÜEE-01.1 & A rendszernek folyamatosan olvasnia kell az ultrahangos érzékelők jelét. \\ \hline
+FR-OÜEE-01.2 & A rendszernek biztonsági távolságküszöböt kell definiálnia. \\ \hline
+FR-OÜEE-01.3 & A távolságküszöb alatti érték esetén jelzést kell generálnia. \\ \hline
+FR-OÜEE-01.4 & A jelzés lehet hang, vizuális vagy kombinált. \\ \hline
+\end{tabularx}
+\end{table}
+
+
+\subsubsection{OÜEE-02 - Automatikus fékezés indítása ECU-n keresztül}
+
+
+\noindent
+\textbf{Given:} A rendszer már érzékelt akadályt \\
+
+\noindent
+\textbf{When:} A távolság tovább csökken és veszélyessé válik
+
+\noindent
+\textbf{Then:} Enyhe automatikus fékezés indul ECU parancson keresztül
+
+\noindent
+\textbf{Comment:} Megelőző beavatkozás.
+
+\begin{table}[H]
+\centering
+\begin{tabularx}{\textwidth}{|c|X|}
+\hline
+\textbf{Azonosító} & \textbf{Leírás} \\ \hline
+FR-OÜEE-02.1 & A rendszernek a távolságváltozást és közeledési sebességet is értékelnie kell. \\ \hline
+FR-OÜEE-02.2 & Kritikus esetben fékezési parancsot kell küldenie az ECU-nak. \\ \hline
+FR-OÜEE-02.3 & Az alkalmazott fékezés enyhe legyen (komfort alapú). \\ \hline
+FR-OÜEE-02.4 & A beavatkozásnak bármikor megszakíthatónak kell lennie sofőr által. \\ \hline
+\end{tabularx}
+\end{table}
+
+\subsubsection{OÜEE-03 - Figyelmeztetés megszűnése}
+
+\noindent
+\textbf{Given:} A rendszer már érzékelt akadályt
+
+\noindent
+\textbf{When:} A jármű eltávolodik az akadálytól
+
+\noindent
+\textbf{Then:} A figyelmeztetés automatikusan megszűnik
+
+\noindent
+\textbf{Comment:} Jelzési zaj csökkentése.
+
+\begin{table}[H]
+\centering
+\begin{tabularx}{\textwidth}{|c|X|}
+\hline
+\textbf{Azonosító} & \textbf{Leírás} \\ \hline
+FR-OÜEE-03.1 & A rendszer folyamatosan újraméri a távolságot. \\ \hline
+FR-OÜEE-03.2 & Ha a távolság meghaladja a küszöböt és stabil, a jelzést törölni kell. \\ \hline
+FR-OÜEE-03.3 & A rendszer készenléti módba vált. \\ \hline
+\end{tabularx}
+\end{table}
+
+\subsubsection{OÜEE-04 - Téves riasztás kezelése}
+
+\noindent
+\textbf{Given:} A rendszer akadályt érzékel
+
+\noindent
+\textbf{When:} Az akadály nem jelent valós ütközési veszélyt
+
+\noindent
+\textbf{Then:} A rendszer nem indít fékezést, csak rövid jelzést
+
+\noindent
+\textbf{Comment:} \textcolor{red}{False positive} szűrés\footnote{megmagyarázni a definíciók között}
+
+\begin{table}[H]
+\centering
+\begin{tabularx}{\textwidth}{|c|X|}
+\hline
+\textbf{Azonosító} & \textbf{Leírás} \\ \hline
+FR-OÜEE-03.1 & A rendszer folyamatosan újraméri a távolságot. \\ \hline
+FR-OÜEE-03.2 & Ha a távolság meghaladja a küszöböt és stabil, a jelzést törölni kell. \\ \hline
+FR-OÜEE-03.3 & A rendszer készenléti módba vált. \\ \hline
+\end{tabularx}
+\end{table}
+
+\subsubsection{OÜEE-05 - Manuális korrigálás}
+
+\noindent
+\textbf{Given:} A rendszer automatikusan beavatkozik
+
+\noindent
+\textbf{When:} A vezető kormányoz vagy fékez
+
+\noindent
+\textbf{Then:} A rendszer azonnal leállítja a beavatkozást
+
+\noindent
+\textbf{Comment:} A sofőr elsőbbséget élvez a jármű irányításában.
+
+\begin{table}[H]
+\centering
+\begin{tabularx}{\textwidth}{|c|X|}
+\hline
+\textbf{Azonosító} & \textbf{Leírás} \\ \hline
+FR-OÜEE-05.1 & A rendszernek érzékelnie kell a vezetői bemeneteket. \\ \hline
+FR-OÜEE-05.2 & Manuális beavatkozás esetén a rendszer $\le$ 200 ms alatt megszakítja az automatikus fékezést. \\ \hline
+FR-OÜEE-05.3 & A rendszer megfigyelő módba vált. \\ \hline
+\end{tabularx}
+\end{table}
+
+
+\subsubsection{OÜEE-06 - Több akadály érzékelése}
+
+\noindent
+\textbf{Given:} Két oldalon is akadály észlelhető
+
+\noindent
+\textbf{When:} Mindkét szenzor veszélyzónát jelez
+
+\noindent
+\textbf{Then:} A rendszer mindkét irányból figyelmeztet, de a kritikusabb oldal határozza meg a beavatkozás mértékét
+
+\noindent
+\textbf{Comment:} Többirányú helyzetértékeléssel kapcsolatos követelmények.
+
+\begin{table}[H]
+\centering
+\begin{tabularx}{\textwidth}{|c|X|}
+\hline
+\textbf{Azonosító} & \textbf{Leírás} \\ \hline
+FR-OÜEE-06.1 & A rendszernek párhuzamosan kell feldolgoznia a jobb és bal oldali távolságadatokat. \\ \hline
+FR-OÜEE-06.2 & A fékezési intenzitás mindig a kisebb távolság oldala szerint legyen meghatározva. \\ \hline
+FR-OÜEE-06.3 & A jelzések vizuálisan külön oldalhoz kötve jelenjenek meg. \\ \hline
+\end{tabularx}
+\end{table}
+
+
+\subsubsection{OÜEE-07 - Szenzorhiba kezelése}
+
+\noindent
+\textbf{Given:} A rendszer nem kap érvényes szenzoradatot
+
+\noindent
+\textbf{When:} Szenzorhiba vagy kommunikációs hiba jelentkezik
+
+\noindent
+\textbf{Then:} A rendszer figyelmezteti a vezetőt és kikapcsolja a beavatkozást
+
+\noindent
+\textbf{Comment:} Hibatűréssel kapcsolatos követelmények.
+
+\begin{table}[H]
+\centering
+\begin{tabularx}{\textwidth}{|c|X|}
+\hline
+\textbf{Azonosító} & \textbf{Leírás} \\ \hline
+FR-OÜEE-07.1 & A rendszernek képesnek kell lennie felismerni hibás vagy irreális jelértékeket. \\ \hline
+FR-OÜEE-07.2 & Hiba esetén automatikus fékezés nem alkalmazható. \\ \hline
+FR-OÜEE-07.3 & A műszerfalon „Szenzorhiba – rendszer korlátozva” jelzés jelenjen meg. \\ \hline
+\end{tabularx}
+\end{table}
+
+
+
+\subsubsection{OÜEE-08 - Nagy sebességnél történő aktiválás}
+
+\noindent
+\textbf{Given:} A jármű nagyobb sebességgel (pl. >50 km/h) halad
+
+\noindent
+\textbf{When:} Az ultrahangos oldalsó szenzor akadályt észlel
+
+\noindent
+\textbf{Then:} A rendszer csak figyelmeztet, de nem avatkozik be automatikusan
+
+\noindent
+\textbf{Comment:} Követelmények a hirtelen, veszélyes fékezés elkerülésére nagy sebességnél.
+
+\begin{table}[H]
+\centering
+\begin{tabularx}{\textwidth}{|c|X|}
+\hline
+\textbf{Azonosító} & \textbf{Leírás} \\ \hline
+FR-OÜEE-08.1 & A rendszernek folyamatosan monitoroznia kell a jármű sebességét. \\ \hline
+FR-OÜEE-08.2 & Ha a sebesség > 50 km/h, az automatikus fékezési funkciót le kell tiltani. \\ \hline
+FR-OÜEE-08.3 & Akadály észlelése esetén hang/vizuális figyelmeztetés jelenjen meg. \\ \hline
+FR-OÜEE-08.4 & Amennyiben a sebesség ismét 50 km/h alá csökken, az automatikus fékezés újra engedélyezhető. \\ \hline
+\end{tabularx}
+\end{table}
+
+
+\subsubsection{OÜEE-09 - ECU kommunikációs hiba}
+
+\noindent
+\textbf{Given:} A rendszer kommunikál a központi ECU-val
+
+\noindent
+\textbf{When:} Az ECU nem válaszol vagy hibát küld vissza
+
+\noindent
+\textbf{Then:} A rendszer megszakítja az automatikus fékezést és csak figyelmeztetést ad
+
+\noindent
+\textbf{Comment:} Hibatűrő működés CAN kommunikáció esetén.
+
+\begin{table}[H]
+\centering
+\begin{tabularx}{\textwidth}{|c|X|}
+\hline
+\textbf{Azonosító} & \textbf{Leírás} \\ \hline
+FR-OÜEE-09.1 & A rendszernek képesnek kell lennie felismerni a hibás vagy megszakadt ECU kommunikációt. \\ \hline
+FR-OÜEE-09.2 & ECU hiba esetén az automatikus fékezési parancsot azonnal meg kell szakítani ($\le$100 ms). \\ \hline
+FR-OÜEE-09.3 & A vezető számára figyelmeztetést kell megjeleníteni a műszerfalon. \\ \hline
+FR-OÜEE-09.4 & A rendszernek hibatűrő állapotba kell kapcsolnia, automatikus beavatkozás nélkül. \\ \hline
+\end{tabularx}
+\end{table}
+
+
+\subsubsection{OÜEE-10 - Környezeti hatások (eső, hó, sötét)}
+
+\noindent
+\textbf{Given:} Az ultrahangos érzékelők pontosságát időjárási körülmények csökkentik
+
+\noindent
+\textbf{When:} A rendszer bizonytalan távolságmérést észlel
+
+\noindent
+\textbf{Then:} Csökkentett intenzitású beavatkozás és vizuális működési állapotjelzés jelenjen meg
+
+\noindent
+\textbf{Comment:} Biztonságos, adaptív működés változó környezeti körülményekben.
+
+\begin{table}[H]
+\centering
+\begin{tabularx}{\textwidth}{|c|X|}
+\hline
+\textbf{Azonosító} & \textbf{Leírás} \\ \hline
+FR-OÜEE-10.1 & A rendszernek fel kell ismernie a szenzor zajos vagy pontatlan mérési állapotát (szórás, instabil jel). \\ \hline
+FR-OÜEE-10.2 & Ilyen esetben a rendszernek csökkentenie kell a beavatkozás erősségét (pl. kisebb fékezési ráta). \\ \hline
+FR-OÜEE-10.3 & A műszerfalon meg kell jeleníteni a „korlátozott működés” üzenetet. \\ \hline
+FR-OÜEE-10.4 & Ha a körülmények javulnak, a rendszernek vissza kell térnie teljes funkcionalitásra. \\ \hline
+\end{tabularx}
+\end{table}
