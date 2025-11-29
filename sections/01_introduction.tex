@@ -1,39 +1,75 @@
-\setstretch{1.2}
+\section{Bevezetés}
 
-\title{\textbf{Bevezetés az IntelliSense 360 rendszerhez}}
-\author{}
-\date{}
+Az IntelliSense 360 egy adaptív perifériás érzékelő- és beavatkozó rendszer, amely a jármű közvetlen környezetét folyamatosan figyeli, és a vezető támogatásával a közúti ütközések elkerülését szolgálja különféle közlekedési helyzetekben.
 
-\maketitle
+A koncepció általános célja a biztonság növelése vezetés közben; a tipikus esetsorok közé tartozik a sávváltás, a parkolás és a szűk helyeken történő manőverezés.
 
-\section*{Bevezetés}
-Az \textbf{IntelliSense 360} egy adaptív perifériás érzékelő- és beavatkozó rendszer, amely a jármű közvetlen környezetét folyamatosan figyeli, és a vezető támogatásával a közúti ütközések elkerülését szolgálja különféle közlekedési helyzetekben. A koncepció általános célja a biztonság növelése vezetés közben; a tipikus esetsorok közé tartozik a sávváltás, a parkolás és a szűk helyeken történő manőverezés.
+\subsection{Felhasználók}
+A rendszert személygépkocsi vezetők használják. A célfelhasználók között mindennapi autóvezetők és tapasztalt sofőrök is szerepelnek, akik számára fontos a jármű környezetének pontos érzékelése, valamint a holttérben lévő járművek, gyalogosok és kerékpárosok időben történő észlelése.
 
-\section*{Felhasználók}
-A rendszert személygépkocsi-vezetők használják. A célfelhasználók között mindennapi autóvezetők és tapasztalt sofőrök is szerepelnek, akik számára fontos a jármű környezetének pontos érzékelése, valamint a holttérben lévő járművek, gyalogosok és kerékpárosok időben történő észlelése.  
 A felhasználó továbbra is a jármű irányításáért felel, a rendszer csak figyelmeztetésekkel és kisebb beavatkozásokkal segíti őt.
 
-\section*{Működés}
-Az \textbf{IntelliSense 360} különböző, egymással kommunikáló modulokból áll:
+\subsection{Működés}
+Az IntelliSense 360 különböző, egymással kommunikáló modulokból áll:
 
-\begin{itemize}[leftmargin=2cm]
+\begin{itemize}
     \item \textbf{Adaptív holttérfigyelés:} radar- és kamerarendszer érzékeli a jármű holtterében közeledő objektumokat, és figyelmezteti a vezetőt.
     \item \textbf{Oldalirányú ütközés-előrejelzés és elkerülés:} ultrahangos szenzorokkal figyeli a jármű közvetlen környezetét, parkoláskor vagy szűk helyzetben enyhe fékezéssel beavatkozhat.
     \item \textbf{Perifériás figyelmeztetés gyalogosokra és kerékpárosokra:} városi környezetben a kamerák azonosítják a jármű útvonalába kerülő mozgó objektumokat, és irányhoz kötött figyelmeztetést adnak.
     \item \textbf{Kiszállási asszisztens:} parkoláskor érzékeli az ajtók közelében megjelenő mozgó járműveket vagy gyalogosokat, és ajtónyitáskor akusztikus vagy vizuális jelzést ad.
     \item \textbf{Sávtartás kereszteződési támogatással:} a járművet a sávban tartja, felismeri a kanyarodási szándékot, és elkerüli a téves vagy felesleges korrekciókat.
-    \item \textbf{Adaptivitás:} a figyelmeztetések és beavatkozások intenzitását a vezető reakcióidejéhez, vezetési stílusához és a környezeti feltételekhez igazítja (például rossz látási viszonyok esetén a radaradatokat részesíti előnyben).
 \end{itemize}
 
-\section*{A rendszer működési határai}
-Az \textbf{IntelliSense 360} nem autonóm vezetési rendszer.  
-Nem veszi át a jármű irányítását, és nem képes minden helyzetben elkerülni az ütközést — csak támogatja a vezetőt a döntések meghozatalában.  
-Nem avatkozik be nagy sebességnél, ahol a beavatkozás kockázatos lehet (például autópályán előzés közben).  
-A kiszállási asszisztens nem blokkolhatja az ajtónyitást, csak figyelmeztetést adhat.  
-A rendszer nem működik teljes értékűen, ha több szenzor hibás vagy a kommunikáció megszakad; ilyen esetekben csak jelzést ad a korlátozott működésről.  
-A sofőr bármikor felülbírálhatja a rendszer beavatkozásait.
+A rendszer adaptív: a figyelmeztetések és beavatkozások intenzitását a vezető reakcióidejéhez, vezetési stílusához és a környezeti feltételekhez igazítja (például rossz látási viszonyok esetén a radaradatokat részesíti előnyben).
 
-\section*{Jelentőség}
-A közúti balesetek jelentős részét a figyelmetlenség, a holttérben maradt járművek, az oldalirányú ütközések, valamint a gyalogos- és kerékpárosforgalomból adódó veszélyhelyzetek okozzák.  
-Az \textbf{IntelliSense 360} ezeket a kockázatokat csökkenti azáltal, hogy időben felismeri a potenciális veszélyeket, és célzott, a helyzethez illeszkedő figyelmeztetéseket ad, vagy szükség esetén enyhén beavatkozik.  
-A rendszer alkalmazása hozzájárul a közlekedésbiztonság növeléséhez és az emberi hibák hatásának mérsékléséhez.
+\subsection{A rendszer működési határai}
+Az IntelliSense 360 nem autonóm vezetési rendszer. Nem veszi át a jármű irányítását, és nem képes minden helyzetben elkerülni az ütközést csak támogatja a vezetőt a döntések meghozatalában. Nem avatkozik be nagy sebességnél, ahol a beavatkozás kockázatos lehet (például autópályán előzés közben).
+
+A kiszállási asszisztens nem blokkolhatja az ajtónyitást, csak figyelmeztetést adhat.
+
+A rendszer nem működik teljes értékűen, ha több szenzor hibás vagy a kommunikáció megszakad; ilyen esetekben csak jelzést ad a korlátozott működésről. A sofőr bármikor felülbírálhatja a rendszer beavatkozásait.
+
+\subsection{Jelentőség}
+A közúti balesetek jelentős részét a figyelmetlenségből, holttérben maradt járművekből, oldalirányú ütközésekből, valamint gyalogos- és kerékpárosforgalomból adódó veszélyhelyzetek okozzák.
+
+Az IntelliSense 360 ezeket a kockázatokat csökkenti azáltal, hogy időben felismeri a potenciális veszélyeket, és célzott, a helyzethez illeszkedő figyelmeztetéseket ad, vagy szükség esetén enyhén beavatkozik. A rendszer alkalmazása hozzájárul a közlekedésbiztonság növeléséhez, az emberi hibák hatásának mérsékléséhez.
+
+\subsection{Tervezett funkciók}
+
+\subsubsection{Adaptív holttérfigyelés}
+Feladata a jármű holttereinek figyelése szenzorok segítségével és a vezető figyelmeztetése, ha egy másik jármű azokat megközelíti. A jelzések illeszkednek a vezető reakcióidejéhez, amelyről korábban a rendszer adatokat gyűjt.
+
+Ha sávváltáskor a szenzorok másik járművet érzékelnek a holttérben, akkor a rendszer hang- és vizuális jelzéssel, opcionálisan a kormány rezgésével figyelmezteti a vezetőt. Alacsony fényviszonyok esetén a radarszenzorokból nyert adatokat részesíti előnyben a rendszer, valamint a figyelmeztető jelzések hosszabban aktívak.
+
+\paragraph{Kérdések:}
+mi történik, ha többen használják az autót? mindenkinek reakcióidő profil? rövidebb időintervallum alapján gyűjtött adatok? az összes átlaga?
+
+\subsubsection{Oldalirányú ütközés előrejelzés és elkerülés}
+Ultrahangos érzékelők segítségével felismeri az oldalirányú ütközések lehetőségét a nem megfelelő sávváltások, vezetői figyelmetlenség és útviszonyok figyelembevételével.
+
+Amennyiben szükséges, a rendszer közbeavatkozik az ütközések elkerüléséért. Ha a rendszer akadályt érzékel, akkor hang- vagy vizuális jelzést ad. Képes automatikus fékezésre, amennyiben egy másik jármű a biztonsági határ alatti távolságban közelíti meg a személygépkocsit.
+
+A téves riasztások kiküszöbölésére bizonyos esetekben csak vizuális figyelmeztetést ad, de nem avatkozik közbe. Ha a vezető manuálisan korrigál, a rendszer megszűnteti a közbeavatkozást.
+
+A rendszer egyszerre több akadályra is képes felhívni a figyelmet, de csak a legkritikusabbra reagál. Amennyiben időjárási viszonyok miatt csökken a szenzorból kinyert adatok megbízhatósága, a rendszer változtat a beavatkozás mértékén és erről figyelmeztetést is ad.
+
+\subsubsection{Perifériás figyelmeztetés gyalogosokra, kerékpárokra}
+Ez a funkció a kiszolgáltatottabb közlekedési szereplőket érzékeli kis sebességnél, elsősorban városi környezetben. Célja a vezető figyelmeztetése a gyalogosok, illetve kerékpárosok figyelmetlenségéből adódó lehetséges ütközésekre.
+
+A rendszer a veszély irányában hang- és vizuális jelzést ad az objektum jellegének, mozgási irányának és sebességének figyelembevételével. Megfelelően kezeli, ha a vezető elmulasztja az irányjelzést és csak vizuális figyelmeztetést ad.
+
+\subsubsection{Kiszállási asszisztens}
+Feladata, hogy figyelmeztesse az utasokat, ha kiszálláskor az ajtónyitást egy másik objektum akadályozná vagy a kiszálló utast közelségével veszélyeztetné. Amennyiben veszélyt érzékel, ajtónyitásra hangjelzést ad. A kiszállást fizikailag nem akadályozhatja.
+
+Csak az érintett ajtónál ad jelzést, minden ajtót külön kezel. A közeledő objektum típusát felismeri és ennek megfelelően növeli a jelzés intenzitását. Ha ajtónyitás közben jelentkezik veszély, akkor képes késleltetett figyelmeztetés adására. Éjszakai módban is képes működni, ilyenkor csökkentett erejű hangjelzést ad, inkább vizuális jelzésre támaszkodik.
+
+\subsubsection{Sávtartás kereszteződési támogatással}
+A sávtartás lehetővé teszi, hogy a vezetői figyelmetlenségből vagy kimerültségből adódó részleges sávváltások elkerülhetők legyenek. Ilyenkor a rendszer kormányzással közbeavatkozik és térkép-, illetve kameraadatok segítségével a sáv közepén tartja a járművet.
+
+A kereszteződési támogatás kiegészíti ennek funkcionalitását a kereszteződések felismerésével, kanyarodás segítésével, ütközési veszélyre figyelmeztetéssel, illetve a jármű megfelelő sávba pozícionálásával a kereszteződések elhagyását követően.
+
+A sávtartás érdekében a rendszer képes a kormányzás korrigálására. Figyelembe veszi az irányjelzést, ilyenkor engedi a sáv elhagyását. Amennyiben ütközési veszélyt érzékel, figyelmezteti a vezetőt, de nem avatkozik közbe.
+
+Képes a sávok kereszteződését kezelni a kormányállás, valamint a jármű iránya alapján. Figyelembe veszi az ideiglenes útjelzéseket, útépítést. Amennyiben a vezető jelentősen közbeavatkozik, a korrekció megszűnik. Ha nincs felfestett sáv, a rendszer akkor is képes a járművet az út megfelelő részén tartani az útpadka, járdaszegély figyelembevételével.
+
+A közvetlen kanyarodás utáni sávváltást felismeri, kezeli. Záróvonalat, stop táblát, egyéb közúti jelzést felismeri és annak megfelelően közbeavatkozik. Alacsony sebességnél csak vizuális támogatást ad.
