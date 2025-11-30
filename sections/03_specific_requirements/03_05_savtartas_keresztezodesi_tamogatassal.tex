@@ -1,0 +1,410 @@
+\subsubsection{SKT-01 — Sávkövetés és korrekció}
+
+\noindent
+\textbf{Given:} A jármű folyamatosan halad jól látható sávfelfestések között
+
+\noindent
+\textbf{When:} A rendszer észleli, hogy a jármű eltér a sávközéptől  
+
+\noindent
+\textbf{Then:} Automatikus kormányzási korrekció történik a sávközépre való visszatéréshez
+
+\noindent
+\textbf{Comment:} Alapfunkció, amely biztosítja, hogy a jármű a sávban maradjon
+
+
+\begin{table}[H]
+\centering
+\begin{tabularx}{\textwidth}{|c|X|}
+\hline
+\textbf{Azonosító} & \textbf{Leírás} \\ \hline
+FR-SKT-01.1 & A rendszernek folyamatosan detektálnia és követnie kell a sávjelzéseket az elülső kamerával. \\ \hline
+FR-SKT-01.2 & A rendszernek valós időben kell kiszámítania az oldalsó eltérést a sávközéptől. \\ \hline
+FR-SKT-01.3 & Ha az eltérés meghaladja a meghatározott küszöböt (pl. >0,3 m), a rendszernek korrekciós kormányzási nyomatékot kell alkalmaznia.  \\ \hline
+FR-SKT-01.4 & A korrekciós beavatkozásnak simának kell lennie, elkerülve a hirtelen kormányzási mozdulatokat.  \\ \hline
+\end{tabularx}
+\end{table}
+
+\subsubsection{SKT-02 — Irányjelzés melletti sávváltás támogatása }
+
+\noindent
+\textbf{Given:} A vezető bekapcsolja az irányjelzőt
+
+\noindent
+\textbf{When:} A rendszer észleli az irányjelzés aktiválását
+
+\noindent
+\textbf{Then:} A sávban tartó nyomaték megszűnik az adott irányban, lehetővé téve a sávváltást
+
+\noindent
+\textbf{Comment:}  Természetes vezetési élményt biztosít a szándékos sávváltások során
+
+
+\begin{table}[H]
+\centering
+\begin{tabularx}{\textwidth}{|c|X|}
+\hline
+\textbf{Azonosító} & \textbf{Leírás} \\ \hline
+FR-SKT-02.1 & A rendszernek detektálnia kell az irányjelző aktiválását. \\ \hline
+FR-SKT-02.2 & Irányjelzés esetén a sávban tartó nyomatékot nullára kell csökkenteni az adott irányban.  \\ \hline
+FR-SKT-02.3 & A rendszernek engednie kell a kontrollált sávelhagyást ellenállás nélkül. \\ \hline
+FR-SKT-02.4 & A manőver után a rendszer automatikusan újraaktiválja a sávban tartást az új sávban való stabilizálódás után.  \\ \hline
+\end{tabularx}
+\end{table}
+
+
+\subsubsection{SKT-03 — Keresztirányú forgalom észlelése }
+
+\noindent
+\textbf{Given:} A jármű útkereszteződéshez közelít
+
+\noindent
+\textbf{When:} A rendszer észleli az oldalról érkező forgalmat 
+
+\noindent
+\textbf{Then:} Hang- és vizuális figyelmeztetést ad a vezetőnek 
+
+\noindent
+\textbf{Comment:} Kiegészítő biztonsági funkció a kereszteződésekben
+
+\begin{table}[H]
+\centering
+\begin{tabularx}{\textwidth}{|c|X|}
+\hline
+\textbf{Azonosító} & \textbf{Leírás} \\ \hline
+FR-SKT-03.1 & A rendszernek oldalsó és elülső szenzorok segítségével kell érzékelnie a keresztirányú mozgást. \\ \hline
+FR-SKT-03.2 & Ha az objektum a biztonsági zónába ér, vizuális és hangos figyelmeztetést kell kiadni. \\ \hline
+FR-SKT-03.3 & Ilyen helyzetben a rendszernek nem szabad automatikusan kormányoznia vagy fékeznie.  \\ \hline
+FR-SKT-03.4 & A figyelmeztetés időtartamát az objektum sebessége és pályája alapján kell igazítani.  \\ \hline
+\end{tabularx}
+\end{table}
+
+
+\subsubsection{SKT-04 — Szándékolatlan sávelhagyás megelőzése}
+
+\noindent
+\textbf{Given:} A vezető nem használ irányjelzőt
+
+\noindent
+\textbf{When:} A jármű elhagyja a sávot
+
+\noindent
+\textbf{Then:} A rendszer automatikus korrekciót alkalmaz 
+
+\noindent
+\textbf{Comment:} Biztonsági funkció a figyelmetlen vezetés ellensúlyozására
+
+\begin{table}[H]
+\centering
+\begin{tabularx}{\textwidth}{|c|X|}
+\hline
+\textbf{Azonosító} & \textbf{Leírás} \\ \hline
+FR-SKT-04.1 & A rendszernek figyelnie kell a kormányzási szöget és az irányjelző állapotát. \\ \hline
+FR-SKT-04.2 & Jelzés nélküli sávelhagyás esetén korrekciós nyomatékot kell alkalmazni. \\ \hline
+FR-SKT-04.3 & Ha a vezető ellenkormányzása meghaladja a küszöböt, a korrekciót azonnal meg kell szakítani. \\ \hline
+FR-SKT-04.4 & A korrekcióval egyidejűleg vizuális és hangjelzést kell megjeleníteni. \\ \hline
+\end{tabularx}
+\end{table}
+
+
+\subsubsection{SKT-05 — Szenzorfúzió és adatkonzisztencia-ellenőrzés }
+
+\noindent
+\textbf{Given:} A jármű több szenzorral követi a sávot
+
+\noindent
+\textbf{When:} A kamera és radar adatai eltérnek 
+
+\noindent
+\textbf{Then:} A sávban tartás felfüggesztésre kerül, és a vezetőt figyelmezteti a rendszer 
+
+\noindent
+\textbf{Comment:} Megbízhatóságot növelő mechanizmus hibás szenzoradat esetén
+
+\begin{table}[H]
+\centering
+\begin{tabularx}{\textwidth}{|c|X|}
+\hline
+\textbf{Azonosító} & \textbf{Leírás} \\ \hline
+FR-SKT-05.1 & A rendszernek folyamatosan ellenőriznie kell a kamera és radar adatainak konzisztenciáját. \\ \hline
+FR-SKT-05.2 & Jelentős eltérés esetén a sávban tartó funkciót fel kell függeszteni. \\ \hline
+FR-SKT-05.3 & „Sávban tartás nem elérhető” üzenetet kell megjeleníteni. \\ \hline
+FR-SKT-05.4 & A rendszernek 5 másodpercenként automatikusan újraszinkronizálást kell kísérelnie.  \\ \hline
+\end{tabularx}
+\end{table}
+
+
+\subsubsection{SKT-06 — Több sávdetektálás kezelése }
+
+\noindent
+\textbf{Given:} Az úton több párhuzamos sávjelzés látható
+
+\noindent
+\textbf{When:} A rendszer két lehetséges sávot érzékel
+
+\noindent
+\textbf{Then:} A rendszer a legvalószínűbb útvonalat választja
+
+\noindent
+\textbf{Comment:} Elősegíti a stabil sávkövetést bonyolult útburkolati minták esetén
+
+\begin{table}[H]
+\centering
+\begin{tabularx}{\textwidth}{|c|X|}
+\hline
+\textbf{Azonosító} & \textbf{Leírás} \\ \hline
+FR-SKT-06.1 & A rendszernek képesnek kell lennie több párhuzamos sávjel detektálására.  \\ \hline
+FR-SKT-06.2 &  A legvalószínűbb sávot a kormányzási szög, a yaw-rate és a jármű iránya alapján kell kiválasztani.  \\ \hline
+FR-SKT-06.3 &  A kiválasztott referencia sávnak stabilnak kell maradnia, amíg a biztonsági küszöb >90\%.  \\ \hline
+FR-SKT-06.4 & Alacsony biztonsági érték esetén „bizonytalan sáv” állapotot kell kijelezni. \\ \hline
+\end{tabularx}
+\end{table}
+
+
+\subsubsection{SKT-07 — HD térkép és vizuális sáv összevetése }
+
+\noindent
+\textbf{Given:} A rendszer HD térképet és kameraképet is használ
+
+\noindent
+\textbf{When:} A kettő között eltérés mutatkozik
+
+\noindent
+\textbf{Then:} A kamerás adat élvez elsőbbséget
+
+\noindent
+\textbf{Comment:}  Biztosítja a valós idejű döntéshozatalt ideiglenes útburkolat esetén
+
+\begin{table}[H]
+\centering
+\begin{tabularx}{\textwidth}{|c|X|}
+\hline
+\textbf{Azonosító} & \textbf{Leírás} \\ \hline
+FR-SKT-07.1 & A rendszernek folyamatosan össze kell vetnie a kameraképet és a HD térképadatokat. \\ \hline
+FR-SKT-07.2 & Konfliktus esetén a kamera adatait kell előnyben részesíteni. \\ \hline
+FR-SKT-07.3 & Az eltérésről diagnosztikai eseményt kell naplózni. \\ \hline
+FR-SKT-07.4 & Ideiglenes útburkolat esetén a sávmodell biztonsági értékét dinamikusan kell módosítani. \\ \hline
+\end{tabularx}
+\end{table}
+
+
+\subsubsection{SKT-08 — Vezetői beavatkozás felismerése}
+
+\noindent
+\textbf{Given:} A vezető erősen kormányozni kezd
+
+\noindent
+\textbf{When:}  A vezető nyomatéka meghaladja a beavatkozási küszöböt 
+
+\noindent
+\textbf{Then:} A rendszer azonnal átadja az irányítást 
+
+\noindent
+\textbf{Comment:} Biztosítja a természetes vezetői prioritást 
+
+\begin{table}[H]
+\centering
+\begin{tabularx}{\textwidth}{|c|X|}
+\hline
+\textbf{Azonosító} & \textbf{Leírás} \\ \hline
+FR-SKT-08.1 & A rendszernek folyamatosan figyelnie kell a vezető által kifejtett nyomatékot. \\ \hline
+FR-SKT-08.2 & 3 Nm feletti nyomaték esetén a rendszernek azonnal ki kell kapcsolnia a kormányzási beavatkozást. \\ \hline
+FR-SKT-08.3 & A műszerfalon „Kézi kormányzás aktív” jelzést kell megjeleníteni. \\ \hline
+FR-SKT-08.4 & A sávban tartás automatikusan újraaktiválódik, ha a vezető elengedi a kormányt. \\ \hline
+\end{tabularx}
+\end{table}
+
+
+\subsubsection{SKT-09 — Szenzorhiba és önkalibráció kezelése}
+
+\noindent
+\textbf{Given:} A sávkövető rendszer egyik szenzora hibás
+
+\noindent
+\textbf{When:} A hiba megszűnik
+
+\noindent
+\textbf{Then:} A rendszer önkalibrációt végez, majd újraindul
+
+\noindent
+\textbf{Comment:} Növeli a rendszer rendelkezésre állását és megbízhatóságát
+
+\begin{table}[H]
+\centering
+\begin{tabularx}{\textwidth}{|c|X|}
+\hline
+\textbf{Azonosító} & \textbf{Leírás} \\ \hline
+FR-SKT-09.1 & A rendszernek folyamatosan figyelnie kell a szenzorok állapotát.  \\ \hline
+FR-SKT-09.2 & Helyreállás után önkalibrációt kell végezni és újra engedélyezni a funkciót.  \\ \hline
+FR-SKT-09.3 & Rövid hang- és vizuális jelzést kell adni az újraaktiválásról. \\ \hline
+FR-SKT-09.4 & A naplóban rögzíteni kell mind a hibát, mind a helyreállást. \\ \hline
+\end{tabularx}
+\end{table}
+
+
+
+\subsubsection{SKT-10 — Sávjel hiányában környezet alapú követés}
+
+\noindent
+\textbf{Given:} Az úton nincsenek jól látható sávfelfestések 
+
+\noindent
+\textbf{When:} A rendszer elveszíti a vizuális sávadatokat 
+
+\noindent
+\textbf{Then:} Átvált környezetkövető módra (padka, útélek stb.) 
+
+\noindent
+\textbf{Comment:} Ideiglenes támogatás rossz minőségű utak esetén
+
+\begin{table}[H]
+\centering
+\begin{tabularx}{\textwidth}{|c|X|}
+\hline
+\textbf{Azonosító} & \textbf{Leírás} \\ \hline
+FR-SKT-10.1 & A rendszernek észlelnie kell, ha hiányoznak a sávjelzések. \\ \hline
+FR-SKT-10.2 & A környezeti jellemzőket (padka, növényzet stb.) kell ideiglenes határként használnia. \\ \hline
+FR-SKT-10.3 & A jármű pályáját inerciális és kormányzási adatok alapján kell fenntartani. \\ \hline
+FR-SKT-10.4 & A vezetőt figyelmeztetni kell: „Sávérzékelés korlátozott – környezetkövetés aktív”. \\ \hline
+\end{tabularx}
+\end{table}
+
+
+
+\subsubsection{SKT-11 — Kereszteződésben mozgó objektumok felismerése}
+
+\noindent
+\textbf{Given:} A jármű kereszteződésbe hajt 
+
+\noindent
+\textbf{When:} A rendszer mozgó objektumokat észlel 
+
+\noindent
+\textbf{Then:} Kockázati szint alapján figyelmezteti a vezetőt  
+
+\noindent
+\textbf{Comment:} Csökkenti az ütközés kockázatát összetett forgalmi helyzetekben
+
+\begin{table}[H]
+\centering
+\begin{tabularx}{\textwidth}{|c|X|}
+\hline
+\textbf{Azonosító} & \textbf{Leírás} \\ \hline
+FR-SKT-11.1 & A rendszernek az összes mozgó objektumot fel kell ismernie a kereszteződésben. \\ \hline
+FR-SKT-11.2 & Minden objektumhoz kockázati értéket kell rendelni az ütközés valószínűsége alapján.  \\ \hline
+FR-SKT-11.3 & Csak a legmagasabb kockázatú objektumokra adható hangos figyelmeztetés. \\ \hline
+FR-SKT-11.4 & Az alacsony kockázatúakat csak vizuálisan kell jelezni. \\ \hline
+\end{tabularx}
+\end{table}
+
+
+
+\subsubsection{SKT-12 — Biztonsági bizalomérték figyelése }
+
+\noindent
+\textbf{Given:} A rendszer folyamatosan működik 
+
+\noindent
+\textbf{When:}  A bizalomérték a sáv- vagy döntési modellben 60\% alá esik 
+
+\noindent
+\textbf{Then:}  A rendszer azonnal lekapcsol, és a vezetőt figyelmezteti   
+
+\noindent
+\textbf{Comment:}  Megakadályozza a bizonytalan működést
+
+\begin{table}[H]
+\centering
+\begin{tabularx}{\textwidth}{|c|X|}
+\hline
+\textbf{Azonosító} & \textbf{Leírás} \\ \hline
+FR-SKT-12.1 & A rendszernek folyamatosan becsülnie kell a bizalmi szintet a sáv- és döntési modellekben.  \\ \hline
+FR-SKT-12.2 & 60\% alatti érték esetén a sávvezérlést le kell állítani.  \\ \hline
+FR-SKT-12.3 & Hang- és vizuális jelzést kell kiadni a vezető felé. \\ \hline
+FR-SKT-12.4 & A kormányzási nyomatékot 500 ms-on belül teljesen el kell engedni. \\ \hline
+\end{tabularx}
+\end{table}
+
+
+
+\subsubsection{SKT-13 — Kanyar utáni újrasáv-érzékelés}
+
+\noindent
+\textbf{Given:} A jármű kanyart hajt végre 
+
+\noindent
+\textbf{When:} A kanyar befejeződik
+
+\noindent
+\textbf{Then:} A rendszer újra inicializálja a sávfelismerést és frissíti a jármű pozícióját   
+
+\noindent
+\textbf{Comment:} Biztosítja a pontos követést manőverek után 
+
+\begin{table}[H]
+\centering
+\begin{tabularx}{\textwidth}{|c|X|}
+\hline
+\textbf{Azonosító} & \textbf{Leírás} \\ \hline
+FR-SKT-13.1 & A kanyar befejezése után azonnal újra kell indítani a sávérzékelést.  \\ \hline
+FR-SKT-13.2 & Az első 3 másodpercben a kamerás adatokat kell előnyben részesíteni. \\ \hline
+FR-SKT-13.3 & Frissíteni kell a jármű pozícióját és a kormányzási offsetet. \\ \hline
+FR-SKT-13.4 & A funkció automatikusan újraaktiválódik, ha a bizalmi érték >85\%. \\ \hline
+\end{tabularx}
+\end{table}
+
+
+
+\subsubsection{SKT-14 — Helyi szabályozás-specifikus viselkedés}
+
+\noindent
+\textbf{Given:} A kereszteződésnél záróvonal, stop vagy egyéb jelzés van
+
+\noindent
+\textbf{When:}  A rendszer érzékeli a táblát vagy jelzést
+
+\noindent
+\textbf{Then:} A viselkedés a szabályhoz igazodik (pl. nem enged sávváltást záróvonalon)  
+
+\noindent
+\textbf{Comment:} Regionális szabályrendszer-integráció 
+
+\begin{table}[H]
+\centering
+\begin{tabularx}{\textwidth}{|c|X|}
+\hline
+\textbf{Azonosító} & \textbf{Leírás} \\ \hline
+FR-SKT-14.1 & A rendszernek fel kell ismernie az útszabályozó táblákat és sávhatárokat (pl. záróvonal, szaggatott vonal). \\ \hline
+FR-SKT-14.2 & Ha záróvonal vagy szabályozó tábla van jelen, a sávváltást segítő funkciót le kell tiltani. \\ \hline
+FR-SKT-14.3 & A rendszernek a helyi szabályrendszereknek megfelelően kell viselkednie, ország/regionális beállítás alapján. \\ \hline
+FR-SKT-14.4 & A vezetőt vizuális jelzéssel vagy HUD-ikon segítségével tájékoztatni kell a korlátozás aktiválásáról. \\ \hline
+\end{tabularx}
+\end{table}
+
+
+
+\subsubsection{SKT-15 — Alacsony sebességű sávban tartás}
+
+\noindent
+\textbf{Given:} A jármű 10–15 km/h-val halad (dugóban, lámpánál)
+
+\noindent
+\textbf{When:}  A sávhatárok még felismerhetők
+
+\noindent
+\textbf{Then:} A rendszer csak vizuális támogatást nyújt, automatikus beavatkozás nélkül 
+
+\noindent
+\textbf{Comment:} Kényelmi funkció alacsony sebességnél
+
+\begin{table}[H]
+\centering
+\begin{tabularx}{\textwidth}{|c|X|}
+\hline
+\textbf{Azonosító} & \textbf{Leírás} \\ \hline
+FR-SKT-15.1 & A rendszernek érzékelnie kell a 20 km/h alatti sebességet.  \\ \hline
+FR-SKT-15.2 & Ebben a tartományban a kormányzási nyomaték inaktív marad. \\ \hline
+FR-SKT-15.3 & A vizuális sávjelzést továbbra is meg kell jeleníteni a kijelzőn. \\ \hline
+FR-SKT-15.4 & 25 km/h felett a sávban tartás automatikusan újraaktiválódik.  \\ \hline
+\end{tabularx}
+\end{table}
