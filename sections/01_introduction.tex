@@ -37,39 +37,52 @@ Az IntelliSense 360 ezeket a kockázatokat csökkenti azáltal, hogy időben fel
 \subsection{Tervezett funkciók}
 
 \subsubsection{Adaptív holttérfigyelés}
-Feladata a jármű holttereinek figyelése szenzorok segítségével és a vezető figyelmeztetése, ha egy másik jármű azokat megközelíti. A jelzések illeszkednek a vezető reakcióidejéhez, amelyről korábban a rendszer adatokat gyűjt.
-
-Ha sávváltáskor a szenzorok másik járművet érzékelnek a holttérben, akkor a rendszer hang- és vizuális jelzéssel, opcionálisan a kormány rezgésével figyelmezteti a vezetőt. Alacsony fényviszonyok esetén a radarszenzorokból nyert adatokat részesíti előnyben a rendszer, valamint a figyelmeztető jelzések hosszabban aktívak.
-
-\paragraph{Kérdések:}
-mi történik, ha többen használják az autót? mindenkinek reakcióidő profil? rövidebb időintervallum alapján gyűjtött adatok? az összes átlaga?
+Feladata a jármű holttereinek figyelése szenzorok segítségével és a vezető figyelmeztetése, ha egy másik jármű azokat megközelíti. A működés főbb jellemzői:
+\begin{itemize}
+    \item \textbf{Adaptív jelzések:} A figyelmeztetések illeszkednek a vezető reakcióidejéhez, amelyről korábban a rendszer adatokat gyűjt.
+    \item \textbf{Sávváltás támogatása:} Ha sávváltáskor a szenzorok másik járművet érzékelnek a holttérben, akkor a rendszer hang- és vizuális jelzéssel, opcionálisan a kormány rezgésével figyelmezteti a vezetőt.
+    \item \textbf{Éjszakai üzemmód:} Alacsony fényviszonyok esetén a radarszenzorokból nyert adatokat részesíti előnyben a rendszer, valamint a figyelmeztető jelzések hosszabban aktívak.
+\end{itemize}
 
 \subsubsection{Oldalirányú ütközés előrejelzés és elkerülés}
 Ultrahangos érzékelők segítségével felismeri az oldalirányú ütközések lehetőségét a nem megfelelő sávváltások, vezetői figyelmetlenség és útviszonyok figyelembevételével.
-
-Amennyiben szükséges, a rendszer közbeavatkozik az ütközések elkerüléséért. Ha a rendszer akadályt érzékel, akkor hang- vagy vizuális jelzést ad. Képes automatikus fékezésre, amennyiben egy másik jármű a biztonsági határ alatti távolságban közelíti meg a személygépkocsit.
-
-A téves riasztások kiküszöbölésére bizonyos esetekben csak vizuális figyelmeztetést ad, de nem avatkozik közbe. Ha a vezető manuálisan korrigál, a rendszer megszűnteti a közbeavatkozást.
-
-A rendszer egyszerre több akadályra is képes felhívni a figyelmet, de csak a legkritikusabbra reagál. Amennyiben időjárási viszonyok miatt csökken a szenzorból kinyert adatok megbízhatósága, a rendszer változtat a beavatkozás mértékén és erről figyelmeztetést is ad.
+\begin{itemize}
+    \item \textbf{Beavatkozás:} Amennyiben szükséges, a rendszer közbeavatkozik az ütközések elkerüléséért. Képes automatikus fékezésre, amennyiben egy másik jármű a biztonsági határ alatti távolságban közelíti meg a személygépkocsit.
+    \item \textbf{Figyelmeztetés:} Ha a rendszer akadályt érzékel, akkor hang- vagy vizuális jelzést ad. A téves riasztások kiküszöbölésére bizonyos esetekben csak vizuális figyelmeztetést ad, de nem avatkozik közbe.
+    \item \textbf{Felülbírálat:} Ha a vezető manuálisan korrigál, a rendszer megszűnteti a közbeavatkozást.
+    \item \textbf{Priorizálás:} A rendszer egyszerre több akadályra is képes felhívni a figyelmet, de csak a legkritikusabbra reagál.
+    \item \textbf{Környezeti adaptáció:} Amennyiben időjárási viszonyok miatt csökken a szenzorból kinyert adatok megbízhatósága, a rendszer változtat a beavatkozás mértékén és erről figyelmeztetést is ad.
+\end{itemize}
 
 \subsubsection{Perifériás figyelmeztetés gyalogosokra, kerékpárokra}
-Ez a funkció a kiszolgáltatottabb közlekedési szereplőket érzékeli kis sebességnél, elsősorban városi környezetben. Célja a vezető figyelmeztetése a gyalogosok, illetve kerékpárosok figyelmetlenségéből adódó lehetséges ütközésekre.
-
-A rendszer a veszély irányában hang- és vizuális jelzést ad az objektum jellegének, mozgási irányának és sebességének figyelembevételével. Megfelelően kezeli, ha a vezető elmulasztja az irányjelzést és csak vizuális figyelmeztetést ad.
+Ez a funkció a kiszolgáltatottabb közlekedési szereplőket érzékeli kis sebességnél, elsősorban városi környezetben.
+\begin{itemize}
+    \item \textbf{Cél:} A vezető figyelmeztetése a gyalogosok, illetve kerékpárosok figyelmetlenségéből adódó lehetséges ütközésekre.
+    \item \textbf{Intelligens jelzés:} A rendszer a veszély irányában hang- és vizuális jelzést ad az objektum jellegének, mozgási irányának és sebességének figyelembevételével.
+    \item \textbf{Irányjelzés hiánya:} Megfelelően kezeli, ha a vezető elmulasztja az irányjelzést és csak vizuális figyelmeztetést ad.
+\end{itemize}
 
 \subsubsection{Kiszállási asszisztens}
-Feladata, hogy figyelmeztesse az utasokat, ha kiszálláskor az ajtónyitást egy másik objektum akadályozná vagy a kiszálló utast közelségével veszélyeztetné. Amennyiben veszélyt érzékel, ajtónyitásra hangjelzést ad. A kiszállást fizikailag nem akadályozhatja.
-
-Csak az érintett ajtónál ad jelzést, minden ajtót külön kezel. A közeledő objektum típusát felismeri és ennek megfelelően növeli a jelzés intenzitását. Ha ajtónyitás közben jelentkezik veszély, akkor képes késleltetett figyelmeztetés adására. Éjszakai módban is képes működni, ilyenkor csökkentett erejű hangjelzést ad, inkább vizuális jelzésre támaszkodik.
+Feladata, hogy figyelmeztesse az utasokat, ha kiszálláskor az ajtónyitást egy másik objektum akadályozná vagy a kiszálló utast közelségével veszélyeztetné.
+\begin{itemize}
+    \item \textbf{Jelzés módja:} Amennyiben veszélyt érzékel, ajtónyitásra hangjelzést ad, de a kiszállást fizikailag nem akadályozhatja.
+    \item \textbf{Szelektivitás:} Csak az érintett ajtónál ad jelzést, minden ajtót külön kezel.
+    \item \textbf{Intenzitás:} A közeledő objektum típusát felismeri és ennek megfelelően növeli a jelzés intenzitását. Ha ajtónyitás közben jelentkezik veszély, akkor képes késleltetett figyelmeztetés adására.
+    \item \textbf{Éjszakai mód:} Éjszaka is képes működni, ilyenkor csökkentett erejű hangjelzést ad, inkább vizuális jelzésre támaszkodik.
+\end{itemize}
 
 \subsubsection{Sávtartás kereszteződési támogatással}
-A sávtartás lehetővé teszi, hogy a vezetői figyelmetlenségből vagy kimerültségből adódó részleges sávváltások elkerülhetők legyenek. Ilyenkor a rendszer kormányzással közbeavatkozik és térkép-, illetve kameraadatok segítségével a sáv közepén tartja a járművet.
-
-A kereszteződési támogatás kiegészíti ennek funkcionalitását a kereszteződések felismerésével, kanyarodás segítésével, ütközési veszélyre figyelmeztetéssel, illetve a jármű megfelelő sávba pozícionálásával a kereszteződések elhagyását követően.
-
-A sávtartás érdekében a rendszer képes a kormányzás korrigálására. Figyelembe veszi az irányjelzést, ilyenkor engedi a sáv elhagyását. Amennyiben ütközési veszélyt érzékel, figyelmezteti a vezetőt, de nem avatkozik közbe.
-
-Képes a sávok kereszteződését kezelni a kormányállás, valamint a jármű iránya alapján. Figyelembe veszi az ideiglenes útjelzéseket, útépítést. Amennyiben a vezető jelentősen közbeavatkozik, a korrekció megszűnik. Ha nincs felfestett sáv, a rendszer akkor is képes a járművet az út megfelelő részén tartani az útpadka, járdaszegély figyelembevételével.
-
-A közvetlen kanyarodás utáni sávváltást felismeri, kezeli. Záróvonalat, stop táblát, egyéb közúti jelzést felismeri és annak megfelelően közbeavatkozik. Alacsony sebességnél csak vizuális támogatást ad.
+A sávtartás lehetővé teszi, hogy a vezetői figyelmetlenségből vagy kimerültségből adódó részleges sávváltások elkerülhetők legyenek.
+\begin{itemize}
+    \item \textbf{Alapműködés:} A rendszer kormányzással közbeavatkozik és térkép-, illetve kameraadatok segítségével a sáv közepén tartja a járművet.
+    \item \textbf{Kereszteződési funkciók:} Felismeri a kereszteződéseket, segíti a kanyarodást, figyelmeztet az ütközési veszélyre, illetve pozícionálja a járművet a kereszteződés elhagyását követően.
+    \item \textbf{Szándékos manőverek:} Figyelembe veszi az irányjelzést, ilyenkor engedi a sáv elhagyását. A közvetlen kanyarodás utáni sávváltást felismeri és kezeli.
+    \item \textbf{Korlátozások:} Amennyiben ütközési veszélyt érzékel, figyelmezteti a vezetőt, de nem avatkozik közbe. Alacsony sebességnél csak vizuális támogatást ad.
+    \item \textbf{Felülbírálat:} Amennyiben a vezető jelentősen közbeavatkozik, a korrekció megszűnik.
+    \item \textbf{Komplex szituációk:}
+    \begin{itemize}
+        \item Képes a sávok kereszteződését kezelni a kormányállás és járműirány alapján, figyelembe véve az ideiglenes útjelzéseket és útépítést.
+        \item Ha nincs felfestett sáv, az útpadka és járdaszegély alapján tartja a járművet az úton.
+        \item Felismeri a záróvonalat, stop táblát és egyéb jelzéseket.
+    \end{itemize}
+\end{itemize}
