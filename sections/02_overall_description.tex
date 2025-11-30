@@ -1,9 +1,19 @@
 \section{Definíciók}
 
 \begin{table}[H]
-\centering
-\begin{tabularx}{\textwidth}{l l}
-\textbf{ECU} & ... \\
-\textbf{False positive} & ... \\
-\end{tabularx}
+    \centering
+    \renewcommand{\arraystretch}{1.5}
+    \begin{tabularx}{\textwidth}{lX}
+    \textbf{Kifejezés} & \textbf{Magyarázat} \\
+    \hline
+    \textbf{ECU} & Electronic Control Unit. A rendszer központi vezérlőegysége, amely felelős a szenzoradatok feldolgozásáért, a szenzorfúzióért, valamint az automatikus beavatkozások (pl. fékezés) parancsának kiadásáért. \\
+    \textbf{False positive} & Téves riasztás. Olyan esemény, amikor a rendszer akadályt érzékel, de az a valóságban nem jelent ütközési veszélyt. A rendszer célja ezen esetek arányának minimalizálása ($<1\%$). \\
+    \textbf{Veszélyzóna} & A jármű várható útjában lévő terület (városi környezetben jellemzően 3-5 méter), ahol olyan álló vagy mozgó akadály található, amellyel a jármű ütközhet. \\
+    \textbf{ECU log} & Diagnosztikai napló. A központi egység memóriája, amelyben a rendszer a szenzorhibákat és működési rendellenességeket rögzíti. \\
+    \textbf{Biztonsági határérték} & Az a rendszerben definiált távolság (pl. 3 méter) vagy időparaméter, amely alá csökkenve a rendszer figyelmeztetést vagy beavatkozást kezdeményez. \\
+    \textbf{Szenzorfúzió} & Több érzékelő (pl. radar és kamera) adatainak együttes feldolgozása (pl. súlyozott átlagolás) a pontosabb távolságbecslés és a téves riasztások csökkentése érdekében. \\
+    \textbf{ASIL-D} & Automotive Safety Integrity Level D. A legmagasabb biztonsági integritási szint, amelynek a rendszer detektálási megbízhatóságának meg kell felelnie. \\
+    \textbf{CAN} & Controller Area Network. Szabványos járműipari kommunikációs protokoll, amelyen keresztül a rendszer moduljai (pl. holttérfigyelés és fékezésvezérlő) adatokat cserélnek. \\
+    \textbf{FMEA} & Failure Mode and Effects Analysis. Hibamód- és hatáselemzés. Egy szisztematikus eljárás a lehetséges rendszerhibák, azok okainak és hatásainak feltárására már a tervezési fázisban.\\
+    \end{tabularx}
 \end{table}
